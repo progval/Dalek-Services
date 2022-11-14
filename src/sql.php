@@ -541,6 +541,8 @@ hook::func(HOOKTYPE_PRE_CONNECT, function($u)
 		PRIMARY KEY(id)
 	);");
 
+	while ($mysqli->next_result()) {;} // Wait for multi_query to complete
+
 	if (find_server(config_get_item("info::SID")))
 	{
 		$conn->multi_query("TRUNCATE TABLE ".sqlprefix()."user;
